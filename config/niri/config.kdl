@@ -704,8 +704,9 @@ binds {
 
     // Screenshot keybinds
     Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+Shift+S hotkey-overlay-title="Take a screenshot" { screenshot; }
+    Ctrl+Print hotkey-overlay-title="Screenshot focusing screen" { screenshot-screen; }
+    Alt+Print hotkey-overlay-title="Screenshot current window" { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
