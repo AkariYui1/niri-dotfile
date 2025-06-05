@@ -1,0 +1,14 @@
+configuration {
+    location: 0;
+    show-icons: true;
+    terminal: "kitty";
+
+    drun-display-format: "{name}";
+    display-calc: "Calc";
+    display-drun: "Apps";
+    display-run: "Command";
+    display-window: "Windows";
+    sidebar-mode: false;
+}
+
+@theme "./monochrome.rasi"

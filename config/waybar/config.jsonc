@@ -1,0 +1,384 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top", // Waybar at top layer
+  // "position": "bottom", // Waybar position (top|bottom|left|right)
+  "height": 35, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  "spacing": 10, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": [
+    "power-profiles-daemon",
+    "idle_inhibitor",
+    "cpu",
+    "memory",
+    "temperature",
+    // "battery#bat0",
+    "battery#bat1",
+    //"group/quick-apps",
+    "niri/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+    // "mpris",
+  ],
+  "modules-right": [
+    "network",
+    "mpd",
+    //"niri/language",
+    "keyboard-state",
+    "backlight",
+    "pulseaudio",
+    // "wireplumber",
+    "privacy",
+    //"bluetooth",
+    "tray",
+    "custom/notification"
+  ],
+  "bluetooth": {
+    "on-click": "blueman-manager"
+  },
+  "keyboard-state": {
+    // "device-path": "/dev/input/event4",
+    "capslock": true,
+    "format": "{icon}",
+    "format-icons": {
+      "locked": "  ",
+      // "unlocked": "",
+      "unlocked": "  "
+    },
+    //fix for xkb_options caps:swapescape ( see waybar issue #2890 )
+    "binding-keys": [
+      1,
+      69,
+      70
+    ]
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 10
+  },
+//  "clock": {
+//    "format": "{:%I:%M %p   󰃭 %d·%m·%y}",
+//    "rotate": 0,
+//    "tooltip-format": "<span>{calendar}</span>",
+//    "calendar": {
+//        "mode": "month",
+//        "mode-mon-col": 3,
+//        "on-scroll": 1,
+//        "on-click-right": "mode",
+//        "format": {
+//            "months": "<span color='#ffead3'><b>{}</b></span>",
+//            "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+//            "today": "<span color='#ff6699'><b>{}</b></span>"
+//        },
+//    "actions": {
+//                "on-click-right": "mode",
+//                "on-click-forward": "tz_up",
+//                "on-click-backward": "tz_down",
+//                "on-scroll-up": "shift_up",
+//                "on-scroll-down": "shift_down"
+//      }
+//    }
+//  },
+    "clock": {
+        "format": "{:%I:%M %p   󰃭 %d·%m·%Y}",
+        "rotate": 0,
+        "tooltip-format": "<tt><span>{calendar}</span></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<big><span color='#ffead3'><b>{}</b></span></big>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+  "cpu": {
+    "interval": 10,
+    "format": "  {usage}%",
+    "rotate": 0,
+    "format-alt": "{icon0}{icon1}{icon2}{icon3}",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+  },  
+  "memory": {
+      "states": {
+          "c": 90, // critical
+          "h": 60, // high
+          "m": 30, // medium
+      },
+      "interval": 30,
+      "format": "  {used}GB",
+      "rotate": 0,
+      "format-m": "󰾅  {used}GB",
+      "format-h": "󰓅  {used}GB",
+      "format-c": "  {used}GB",
+      "format-alt": "󰾆 {percentage}%",
+      "max-length": 10,
+      "tooltip": true,
+      "tooltip-format": "󰾆  {percentage}%\n  {used:0.1f}GB/{total:0.1f}GB"
+  },
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 90,
+    "format-critical": "{temperatureC}°C 󱗗",
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "reverse-scrolling": true,
+    // "reverse-mouse-scrolling": true,
+    "on-scroll-up": "brightnessctl s 5%+",
+    "on-scroll-down": "brightnessctl s 5%-",
+    "on-click": "brightnessctl s 100%",
+    "on-click-middle": "brightnessctl s 0",
+    "on-click-right": "brightnessctl s 1%"
+  },
+  "battery#bat0": {
+    "bat": "BAT0",
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "battery#bat1": {
+    "bat": "BAT1",
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "network": {
+    "tooltip": true,
+    "format-wifi": "<span foreground='#6afff3'>  {bandwidthDownBytes}</span>    <span foreground='#bf71ff'>  {bandwidthUpBytes}</span>",
+    "rotate": 0,
+    "format-ethernet": "󰈀 ",
+    "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>",
+    "format-linked": "󰈀 {ifname} (No IP)",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 2,
+  },
+  "pulseaudio": {
+    "reverse-scrolling": true,
+    "scroll-step": 5, // %, can be a float
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "{icon} {format_source}",
+    "format-muted": "{volume}% 󰝟 {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      //"headphone": "",
+      //"hands-free": "",
+      //"headset": "",
+      //"phone": "",
+      //"portable": "",
+      //"car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol",
+    "on-click-middle": "wpctl set-mute @DEFAULT_SINK@ toggle"
+  },
+  "custom/media": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "max-length": 40,
+    "format-icons": {
+      "spotify": "",
+      "default": "🎜"
+    },
+    "escape": true,
+    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  "group/quick-apps": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 250,
+      "children-class": "quick-app",
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/nwg-drawer", // First element is the "group leader" and won't ever be hidden
+      "custom/collector",
+      "custom/text-pieces",
+      "custom/dialect",
+      "custom/characters",
+      "custom/frog",
+      "custom/eyedropper"
+    ]
+  },
+  "custom/nwg-drawer": {
+    "tooltip": true,
+    "tooltip-format": "open nwg-drawer",
+    "format": "󰀻",
+    "on-click": "nwg-drawer -ovl",
+    "escape": true
+  },
+  "custom/collector": {
+    "tooltip": true,
+    "tooltip-format": "open Collector",
+    "format": "󰇀",
+    "on-click": "flatpak run it.mijorus.collector",
+    "on-click-middle": "flatpak kill it.mijorus.collector",
+    "escape": true
+  },
+  "custom/text-pieces": {
+    "tooltip": true,
+    "tooltip-format": "open Text Pieces",
+    "format": "",
+    "on-click": "flatpak run io.gitlab.liferooter.TextPieces",
+    "on-click-middle": "flatpak kill io.gitlab.liferooter.TextPieces",
+    "escape": true
+  },
+  "custom/dialect": {
+    "tooltip": true,
+    "tooltip-format": "open Dialect",
+    "format": "󰗊",
+    "on-click": "flatpak run app.drey.Dialect",
+    "on-click-middle": "flatpak kill app.drey.Dialect",
+    "escape": true
+  },
+  "custom/characters": {
+    "tooltip": true,
+    "tooltip-format": "open Characters",
+    "format": "󱔁",
+    "on-click": "flatpak run org.gnome.Characters",
+    "on-click-middle": "flatpak kill org.gnome.Characters",
+    "escape": true
+  },
+  "custom/frog": {
+    "tooltip": true,
+    "tooltip-format": "open Frog",
+    "format": "",
+    "on-click": "flatpak run com.github.tenderowl.frog",
+    "on-click-middle": "flatpak kill com.github.tenderowl.frog",
+    "escape": true
+  },
+  "custom/eyedropper": {
+    "tooltip": true,
+    "tooltip-format": "open Eyedropper",
+    "format": "󰈊",
+    "on-click": "flatpak run com.github.finefindus.eyedropper",
+    "on-click-middle": "flatpak kill com.github.finefindus.eyedropper",
+    "escape": true
+  },
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      // Named workspaces
+      // (you need to configure them in niri)
+      // "browser": "",
+      // "discord": "",
+      // "chat": "<b></b>",
+      // Icons by state
+      "active": "",
+      "default": ""
+    }
+  },
+  "niri/language": {
+    "format": "{short}"
+    // "format-en": "{}"
+    // "format-cs": "Kde domov můj?"
+  }
+}

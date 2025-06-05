@@ -1,0 +1,105 @@
+* {
+    color0: #07090D;
+    color1: #0F111A;
+    color2: #252941;
+    color3: #34395B;
+    color4: #434A75;
+    text:   #979EC4;
+
+    font: "JetBrainsMono Nerd Font 12";
+    width: 500px;
+    height: 600px;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    border: 2px;
+    border-radius: 6px;
+    border-color: @color3;
+}
+
+mainbox {
+    background-color: @color1;
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 1px;
+}
+
+prompt {
+    background-color: @text;
+    text-color: @color0;
+    padding: 6px;
+    border-radius: 6px;
+    margin: 10px 0px 0px 10px;
+}
+
+entry {
+    padding: 6px 6px 6px 0px;
+    margin: 10px 0px 0px 10px;
+    text-color: @text;
+    background-color: transparent;
+}
+
+listview {
+    lines: 6;
+    columns: 1;
+    margin: 10px 10px 9px 10px ;
+    border: 0px 0px 1px 0px;
+    border-color: @color2;
+    background-color: transparent;
+}
+
+element {
+    padding: 6px;
+    background-color: transparent;
+    text-color: @text;
+}
+
+element selected {
+    border-radius: 6px;
+    background-color:  @text;
+    text-color: @color0;
+}
+
+mode-switcher {
+    background-color: transparent;
+}
+
+button {
+    padding: 6px;
+    margin: 0px 10px 10px 10px;
+
+    background-color: transparent;
+    text-color: @text;
+
+    border-radius: 4px;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+    background-color: @color2;
+    text-color: @text;
+}
+
+message {
+    background-color: transparent;
+    margin: 10px 10px 0 10px;
+    padding: 6px;
+    border: 1px;
+    border-radius: 4px;
+    border-color: @color3;
+}
+
+textbox {
+    text-color: @text;
+    background-color: transparent;
+}
