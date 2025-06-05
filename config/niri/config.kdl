@@ -1,22 +1,12 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
-
-// Input device configuration.
-// Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard {
         xkb {
-            // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
-
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
         }
-
         // Enable numlock on startup, omitting this setting disables it.
         numlock
     }
@@ -57,7 +47,6 @@ input {
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
     warp-mouse-to-focus
-
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
     // focus-follows-mouse max-scroll-amount="0%"
@@ -168,7 +157,7 @@ output "HDMI-A-1" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 6
+    gaps 4
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -217,7 +206,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
 
         // How many logical pixels the ring extends out from the windows.
         width 2
@@ -228,7 +217,8 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        // active-color "#7fc8ff"
+        active-gradient from="#80c8ff" to="#90484f" angle=105 relative-to="workspace-view"  
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
@@ -253,11 +243,14 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        off
+        // off
 
-        width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
+        width 3
+        // active-color "#ffc87f"
+        // inactive-color "#505050"
+        
+        active-gradient from="#80c8ff" to="#90484f" angle=105 relative-to="workspace-view"
+        inactive-gradient from="#505050" to="#808080" angle=45 
 
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
@@ -269,7 +262,7 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        // on
+        on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -285,7 +278,7 @@ layout {
         // window. These will also remove client-side shadows if the window
         // draws any.
         // 
-        // draw-behind-window true
+        draw-behind-window true
 
         // You can change how shadows look. The values below are in logical
         // pixels and match the CSS box-shadow properties.
@@ -361,12 +354,6 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
 
-overview {
-    workspace-shadow {
-        softness 0 
-        spread 5
-    }
-}
 
 layer-rule {
     match namespace="swww-daemon"
@@ -381,7 +368,7 @@ animations {
     // Uncomment to turn off all animations.
     // off
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    slowdown 1.3
     workspace-switch {
             spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
         }
@@ -426,12 +413,10 @@ animations {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
 window-rule {
     match app-id="kitty"
     draw-border-with-background false
-    // opacity 0.9
+    opacity 0.85
     shadow {
         on
         softness 40
@@ -450,7 +435,7 @@ window-rule {
     min-width 800
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
+// Open the Firefox or Zen-browser picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
@@ -473,7 +458,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 10
     clip-to-geometry true
 }
 
@@ -493,10 +478,10 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+D hotkey-overlay-title="Run an Application: Rofi" { spawn "rofi" "-show" "drun"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Mod+E hotkey-overlay-title="Open a File manager: Nautilus" { spawn "nautilus" "--new-window";}
+    Mod+T hotkey-overlay-title="Open terminal: Kitty" { spawn "kitty"; }
+    Mod+D hotkey-overlay-title="Run app launcher: Rofi" { spawn "rofi" "-show" "drun"; }
+    Super+Alt+L hotkey-overlay-title="Lock the screen: Swaylock" { spawn "swaylock"; }
+    Mod+E hotkey-overlay-title="Open file manager: Nautilus" { spawn "nautilus" "--new-window";}
     
     Ctrl+Alt+R hotkey-overlay-title="Reload waybar" { spawn "~/.config/niri/scripts/reloadwaybar.sh";}
     Mod+Shift+C hotkey-overlay-title="Color picker" { spawn "~/.config/niri/scripts/colorpicker.sh";}
@@ -717,6 +702,7 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
+    // Screenshot keybinds
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
