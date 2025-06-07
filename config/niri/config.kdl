@@ -46,10 +46,11 @@ input {
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    warp-mouse-to-focus
+    // warp-mouse-to-focus
+
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -57,7 +58,6 @@ input {
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
 output "eDP-1" {
     variable-refresh-rate on-demand=true
     // Uncomment this line to disable this output.
@@ -100,7 +100,7 @@ output "DP-1" {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@60.00"
+    // mode "1280x1024@75.025"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1
@@ -433,6 +433,19 @@ window-rule {
     open-focused false
     min-height 500
     min-width 800
+}
+
+window-rule {
+    match app-id="resolve"
+    open-floating true
+    open-focused true
+}
+
+window-rule {
+    match title="^DaVinci Resolve - (.+)$"
+    open-floating false
+    open-fullscreen true
+    open-focused true
 }
 
 // Open the Firefox or Zen-browser picture-in-picture player as floating by default.
