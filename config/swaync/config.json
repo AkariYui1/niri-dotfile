@@ -56,12 +56,12 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "󰶐",
-          "command": "niri msg action power-off-monitors"
-        },
-        {
           "label": "󰌾",
           "command": "swaylock -f"
+        },
+        {
+          "label": "󰩈",
+          "command": "niri msg action quit --skip-confirmation"
         },
         {
           "label": "󰂠",
