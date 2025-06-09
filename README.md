@@ -37,7 +37,7 @@ Everything you see is done purely because I'm unemployed and hate myself.
 - **Font**: [JetBrainsMonoNerdFont](https://www.nerdfonts.com/font-downloads)
 - **Editor**: [NeoVim](https://neovim.io/)
 
-## Dependencies
+## Required dependencies
 
 ---
 
@@ -77,7 +77,7 @@ sudo pacman -Sy --needed waybar
 #### **Cursor**
 
 ```bash
-yay -Sy --needed
+yay -Sy --needed bibata-cursor-theme-bin
 ```
 
 
