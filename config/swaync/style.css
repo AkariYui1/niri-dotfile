@@ -71,9 +71,9 @@ scale trough {
 
 /* Control center background-color */
 .control-center {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 10px;
-  margin-right: 10px;
+  margin-right: 3px;
   margin-left: 10px;
   background-color: @mainbg_color;
 }
