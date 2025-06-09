@@ -5,7 +5,7 @@
   "height": 35, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
   "spacing": 6, // Gaps between modules (4px)
-  "output": "eDP-1", // Show waybar only on 1 monitor
+  // "output": "eDP-1", // Show waybar only on 1 monitor
   // Choose the order of the modules
   "modules-left": [
     "power-profiles-daemon",
