@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>Crylia Theme</h1>
+    <h1>Heavily WIP, don't use it if you don't know what to do</h1>
 </div>
 
 ---
