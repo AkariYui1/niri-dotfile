@@ -3,4 +3,4 @@ Still working on alot of stuffs
 
 ## Preview:
 
-How
+assets/preview.png
