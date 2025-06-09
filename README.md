@@ -3,4 +3,4 @@ Still working on alot of stuffs
 
 ## Preview:
 
-assets/preview.png
+![Preview rice](assets/preview.png)
