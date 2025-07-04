@@ -15,12 +15,6 @@ zinit snippet https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo/sudo.p
 eval "$(fzf --zsh)"
 
 fastfetch
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 EDITOR=nvim
 
@@ -28,7 +22,7 @@ EDITOR=nvim
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -v
+# bindkey -v
 # End of lines configured by zsh-newuser-install
 # The followi2 g lines were added by compinstall
 zstyle :compinstall filename '/home/akariyui/.zshrc'
@@ -72,10 +66,11 @@ alias WASD='yay -S --needed --noconfirm'
 alias DWASD='yay -Rnsc --noconfirm'
 
 alias x11='env DISPLAY=:11'
-alias discord='env DISPLAY=:11 discord'
+# alias discord='env DISPLAY=:11 discord'
 
 alias zshcfg='nvim .zshrc'
 alias niricfg='nvim .config/niri/config.kdl'
+alias grub-update='sudo grub-mkconfig -o /boot/gr'
 
 alias c='clear' # clear terminal
 alias l='eza -lh --icons=auto' # long list
@@ -89,10 +84,4 @@ alias pa='$aurhelper -Ss' # list available package
 alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 alias vc='env DISPLAY=:11 code' # gui code editor
-
-# Powerlevel10k
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
