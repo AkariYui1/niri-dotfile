@@ -1,16 +1,13 @@
-
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-
-"logo": {
+  "logo": {
     "type": "auto",
-    "source": "~/.config/fastfetch/logo/*.icon",
+    // "source": "~/.config/fastfetch/logo/*.icon",
     "height": 18,
     "padding": {
-      "top": 5,
-    },
+      "top": 5
+    }
   },
-
   "display": {
     "color": {
       "separator": "blue"
@@ -35,7 +32,7 @@
       "type": "host",
       "key": "  MRB      ",
       "keyColor": "cyan",
-      "format" : "{1}"
+      "format": "{1}"
     },
     {
       "type": "memory",
@@ -53,11 +50,11 @@
       "key": "󰍛  GPU      ",
       "keyColor": "cyan"
     },
-        {
-          "type": "disk",
-          "key": "󰉉  SSD      ",
-          "keyColor": "cyan"
-        },
+    {
+      "type": "disk",
+      "key": "󰉉  SSD      ",
+      "keyColor": "cyan"
+    },
     {
       "type": "custom",
       "format": ">-----------<+>------------------------------------------<",
@@ -73,12 +70,11 @@
       "key": "  Shell    ",
       "keyColor": "green"
     },
-{
+    {
       "type": "lm",
       "key": "  Lockscr  ",
       "keyColor": "green"
     },
-
     {
       "type": "wm",
       "key": "  Session  ",
@@ -125,9 +121,8 @@
     {
       "type": "battery",
       "key": "  Battery  ",
-      "keyColor": "blue" 
+      "keyColor": "blue"
     },
-
     {
       "type": "disk",
       "key": "󰅐  OS Age   ",
