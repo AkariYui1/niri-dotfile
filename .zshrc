@@ -85,3 +85,5 @@ alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 alias vc='env DISPLAY=:11 code' # gui code editor
 
+
+export PATH=$PATH:/home/akariyui/.spicetify
