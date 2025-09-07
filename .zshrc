@@ -87,3 +87,4 @@ alias vc='env DISPLAY=:11 code' # gui code editor
 
 
 export PATH=$PATH:/home/akariyui/.spicetify
+eval "$(starship init zsh)"

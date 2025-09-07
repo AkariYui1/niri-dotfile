@@ -341,7 +341,7 @@ spawn-at-startup "nm-applet"
 spawn-at-startup "xwayland-satellite" ":11"
 spawn-at-startup "swww-daemon"
 // spawn-at-startup "swaybg" "-i" "~/Downloads/wallpapers/fuji.jpg" "-m" "fill"
-spawn-at-startup "sh" "-c" "swaybg -i ~/Downloads/wallpapers/fuji.jpg -m fill"
+spawn-at-startup "sh" "-c" "swaybg -i ~/GIT/src/wallpapers/fuji.jpg -m fill"
 spawn-at-startup "~/.config/niri/scripts/autolaunchapps.sh"
 
 
